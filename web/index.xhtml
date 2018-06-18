@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <link href="./SRC/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="./SRC/css/my-css.css" rel="stylesheet" type="text/css"/>
+        <title>Log In Page</title>
+    </h:head>
+    <h:body>
+        <div class="my-container container-fluid p-3">
+            <div class="row">
+                <div class="col-12">
+                    <h:form>
+                        <div class="form-group">
+                            <label for="name">Username</label>
+                            <input name="name" type="email" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Username" required="true"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="pass">Password</label>
+                            <input type="password" class="form-control" id="pass" placeholder="Password" required="true"/>
+                        </div>
+                        <h:commandButton type="submit" class="btn btn-dark" value="Submit"></h:commandButton>
+                    </h:form>
+                </div>
+            </div>
+        </div>
+        <script src="./SRC/js/jquery-3.3.1.min.js"></script>
+        <script src="./SRC/js/bootstrap.bundle.min.js"></script>
+    </h:body>
+</html>
+
