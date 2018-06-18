@@ -1,3 +1,30 @@
 .my-container{
     max-width: 500px;
 }
+.house-option{
+     display: block;
+     margin: 20px 0;
+     text-align: center;
+     font-size: 26px;
+     color: black;
+}
+.house-option:hover,.house-option:active{
+     color: black;
+     text-decoration: none;
+     outline: none;
+}
+.house-action{
+    display: block;
+    text-align: center;
+    margin: 0 auto;
+    background-color: transparent;
+    font-size: 16px;
+    color: black;
+    border: 0;
+    cursor: pointer;
+}
+.house-action:hover,.house-action:active{
+    color: black;
+    text-decoration: none;
+    outline: none;
+}

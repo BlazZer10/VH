@@ -1,9 +1,6 @@
-
 package DB;
 
-
-
-    import java.sql.Connection;
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,7 +10,7 @@ import java.util.logging.Logger;
 
 public class Connect{
     
-    private static final String URL = "jdbc:mysql://localhost:3306/albaniatravel";
+    private static final String URL = "jdbc:mysql://localhost:3306/visit_home";
     private static final String UID = "root";
     private static final String UPassword = "";
     
@@ -29,7 +26,6 @@ public class Connect{
         }
     }
 
-    
     public Connection getConnection() throws ClassNotFoundException {
        if(c == null) 
            getConnected();
@@ -38,7 +34,6 @@ public class Connect{
         return c;
     }
 
-    
     public void setConnection(Connection c) {
         this.c = c;
     }

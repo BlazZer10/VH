@@ -3,24 +3,30 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Houses Options</title>
         <h:outputStylesheet name="css/jsfcrud.css"/>
-        <link href="./SRC/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="./SRC/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>\
+        <link href="./SRC/css/my-css.css" rel="stylesheet" type="text/css"/>
         
     </h:head>
     <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="/houses/List" value="Show All Houses Items"/>
-        <br />
-        <h:link outcome="/userHouse/List" value="Show All UserHouse Items"/>
-        <br />
-        <h:link outcome="/users/List" value="Show All Users Items"/>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h:link class="house-option" outcome="/houses/List" value="Show All Houses Items"/>
+                    <h:link class="house-option" outcome="/userHouse/List" value="Show All UserHouse Items"/>
+                    <h:link class="house-option" outcome="/users/List" value="Show All Users Items"/>
+                </div>
+            </div>
+        </div>
+        
         <script src="./SRC/js/jquery-3.3.1.min.js"></script>
         <script src="./SRC/js/bootstrap.bundle.min.js"></script>
     </h:body>
 
 
+    <script src="./SRC/js/jquery-3.3.1.min.js"></script>
+    <script src="./SRC/js/bootstrap.bundle.min.js"></script>
 
 </html>
 

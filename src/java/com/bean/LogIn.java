@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 
-@ManagedBean (name="log")
+@ManagedBean (name="login")
 @SessionScoped
 public class LogIn {
 
@@ -24,21 +24,22 @@ public class LogIn {
     public String validate() {
         
         Connect db = new Connect();
-        String email_query = null , pass_query = null;
+        String name_query = null , pass_query = null;
         
         try {
             Statement stm = db.getConnection().createStatement();
-            String query = "SELECT * FROM users WHERE email = '"+this.name+"'";
+            String query = "SELECT * FROM users WHERE Username = '"+this.name+"'";
             this.result = stm.executeQuery(query);
             this.result.next();
-            email_query = this.result.getString("Username");
+            this.userID = this.result.getInt("ID");
+            name_query = this.result.getString("Username");
             pass_query = this.result.getString("Password");
             } catch (Exception e) {
                 System.err.println("Error is : "+e);
             }
         
         FacesContext context = FacesContext.getCurrentInstance();
-        if(this.name.equals(email_query) && this.password.equals(pass_query)){
+        if(this.name.equals(name_query) && this.password.equals(pass_query)){
             
             context.getExternalContext().getSessionMap().put("user", "user");
            
@@ -47,10 +48,11 @@ public class LogIn {
             session.setMaxInactiveInterval(60 * 10);
         }
         else{
+            this.userID = 0;
             this.name = null;
             this.password = null;
         }
-        return "/index.xhtml?faces-redirect=true";
+        return "../HouseOptions.xhtml?faces-redirect=true";
     }
 
     public String logout() {
@@ -68,8 +70,8 @@ public class LogIn {
     public void setInfo(){
         FacesContext fc = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) fc.getCurrentInstance().getExternalContext().getRequest();
-        this.name = request.getParameter("username");
-        this.password = request.getParameter("passw");
+        this.name = request.getParameter("name");
+        this.password = request.getParameter("password");
         if(this.session_name != null){
             logout();
         }

@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>    
+        
+    </h:head>
+    
     <ui:composition template="/template.xhtml">
+        
         <ui:define name="title">
             <h:outputText value="#{bundle.ListHousesTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
+
+        
             <h:form styleClass="jsfcrud_list_form">
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
@@ -84,11 +92,26 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{housesController.prepareView}" value="#{bundle.ListHousesViewLink}"/>
+                            <h:commandLink class="house-action" action="#{housesController.prepareView}" value="#{bundle.ListHousesViewLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{housesController.prepareEdit}" value="#{bundle.ListHousesEditLink}"/>
+                            <h:commandLink class="house-action" action="#{housesController.prepareEdit}" value="#{bundle.ListHousesEditLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{housesController.destroy}" value="#{bundle.ListHousesDestroyLink}"/>
+                            <h:commandLink class="house-action" action="#{housesController.destroy}" value="#{bundle.ListHousesDestroyLink}"/>
+
+                            <h:form>
+                                <input hidden="true" name="id" type="number" value="#{item.id}" />
+                                <c:if test="#{actions.rentBtn(item.id)=='enabled'}">
+                                    <h:commandButton class="house-action" value="Rent"></h:commandButton>
+                                </c:if>
+                                <c:if test="#{actions.rentBtn(item.id)=='disabled'}">
+                                    <h:commandButton class="house-action" value="Rent" disabled="true"></h:commandButton>
+                                </c:if>
+                            </h:form>
+                            
+                            <h:form>
+                                <input hidden="true" name="id" type="number" value="#{item.id}" />
+                                <h:commandButton class="house-action" value="Release"></h:commandButton>
+                            </h:form>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
@@ -98,7 +121,12 @@
                 <br />
                 <h:link outcome="/index" value="#{bundle.ListHousesIndexLink}"/>
             </h:form>
+        <link href="../SRC/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>\
+        <link href="../SRC/css/my-css.css" rel="stylesheet" type="text/css"/>
+        <script src="../SRC/js/jquery-3.3.1.min.js"></script>
+        <script src="../SRC/js/bootstrap.bundle.min.js"></script>
         </ui:define>
+        
     </ui:composition>
 
 </html>
